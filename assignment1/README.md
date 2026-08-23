@@ -15,11 +15,7 @@ assignment1/
   README.md
 ```
 
-## Before you run this
-
-I could not compile or run this code myself — this sandbox has no access to
-the Go module proxy (`proxy.golang.org`), so `go mod tidy` fails here. Run
-these steps on your own laptop where you have normal internet access.
+## Before we run
 
 ## 1. Make sure your kind cluster is up
 
@@ -72,33 +68,3 @@ Right now both programs fall back to your laptop's kubeconfig. To satisfy
    get/list/create/update/delete on configmaps, pods, deployments.
 4. Run it as a one-shot Pod using that ServiceAccount. Inside the Pod,
    `rest.InClusterConfig()` will succeed instead of falling through.
-
-Ask me when you're ready to do this — I'll generate the Dockerfile and RBAC
-YAML for you. It's genuinely useful groundwork for Assignment 3+ where your
-controller will need its own RBAC anyway.
-
-## 5. Write-up (the assignment explicitly asks for this)
-
-Answer these in your own words, a few sentences each, and drop them in this
-README or your PR description:
-
-- What's the biggest ergonomic difference you personally felt between the
-  two libraries while writing the same CRUD logic twice?
-- What did `scheme.Scheme` actually do — what breaks if you don't register
-  a type with it?
-- Read one blog/doc page about controller-runtime's caching client and
-  informers. Summarize in 2-3 sentences, in your own words, what problem
-  the cache solves that plain client-go doesn't.
-- Any utility function or helper (from either library) that surprised you
-  or saved you time?
-
-## Commit message template
-
-```
-assignment1: client-go and controller-runtime CRUD on ConfigMap/Pod/Deployment
-
-- implemented CRUD for 3 resources using client-go typed clientset
-- implemented same CRUD using controller-runtime's unified client.Client
-- verified against local kind cluster
-- write-up: <one-line summary of your key takeaway>
-```
